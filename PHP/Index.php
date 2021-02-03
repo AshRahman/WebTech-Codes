@@ -1,6 +1,16 @@
 <?php
     echo "Hello World";
-    
+    print"Hello form section F <br>";
+    for($i=0;$i<10;$i++){
+        echo $i.'<br>';
+    }
+    $age 17;
+    if($age>18){
+        echo "you can cast vote";
+    }
+    else{
+        echo"cant cast vote";
+    }
 ?>
 <html>
     <head>
