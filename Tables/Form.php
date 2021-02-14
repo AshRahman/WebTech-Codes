@@ -5,19 +5,19 @@
 <body>
     <h1>User Registration</h1>
 <form action="submitted.php" method="post"><!-- controls must be in form tag-->
-    <span>Username</span>: <input type="text"><br>
-    <span>Password</span>: <input type="password"><br>
-    <span>Gender</span>: <input type="radio" name="gender">Male<input type="radio" name="gender">Female<br>
+    <span>Username</span>: <input type="text" name="uname"><br>
+    <span>Password</span>: <input type="password" name="pass"><br>
+    <span>Gender</span>: <input type="radio" name="gender" value="male">Male<input type="radio" name="gender"value="male">Female<br>
     <span>Hobbies</span>: <input type="checkbox">Movies<input type="checkbox">Music<input type="checkbox">Games <br>
     <span>Profession</span>
-    <select name ="profession">
+    <select name =profession">
         <option disabled selected>Choose one</option>
         <option>Teaching</option>
         <option>Service</option>
         <option>Business</option>
     </select><br>
-    <span>Bio:</span> <textarea></textarea> <br>
-    <input type="submit" value="Submit">
+    <span>Bio:</span> <textarea name="tarea"></textarea> <br>
+    <input type="submit" value="Submit" >
 
 
 

@@ -6,9 +6,11 @@
 <body>
     <h1>Form Submitted</h1>
     <?php
-        $_REQUEST[]
-        $_GET[]
-        $_POST[]
+        
+        echo $_POST["uname"]."<br>"; 
+        echo $_POST["pass"]."<br>" ;
+        echo $_POST["gender"]."<br>";
+        echo $_POST["tarea"]."<br>";
 
     ?>
     
