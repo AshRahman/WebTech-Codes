@@ -59,7 +59,7 @@
                 $profession=$_POST["profession"];
             }
 
-            if(isset($_POST["hobbies[]"])){
+            if(!isset($_POST["hobbies[]"])){
                 $err_hobbies="Hobbies must be selected";
             }
             else{
