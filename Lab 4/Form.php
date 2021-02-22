@@ -5,6 +5,10 @@
         $err_uname="";
         $pass="";
         $err_pass="";
+        $err_upass="";
+        $err_lpass="";
+        $err_npass="";
+        $err_spass="";
         $cpass="";
         $err_cpass="";
 
@@ -50,9 +54,6 @@
             else if(strlen($_POST["name"]) < 6){
                 $err_name="Name must be more than 6 characters long";
             }
-            else if(strpos($_POST["name"]," ")){
-                $err_name="Name should not contain whitespace";
-            }
 
             else{   
                 $name=htmlspecialchars($_POST["name"]);
@@ -73,30 +74,67 @@
                 $uname=$_POST["uname"];
 
             }
+            $up=$_POST["pass"];
+            for($i=0;$i<strlen($up);$i++){
+                if(ctype_lower($up[$i])){
+                    $upt=true;
+                    break;
+                }
+                else{
+                    $upt=false;
+                }
+            }
+            $low=$_POST["pass"];
+            for($i=0;$i<strlen($up);$i++){
+                if(ctype_lower($up[$i])){
+                    $lowt=true;
+                    break;
+                }
+                else{
+                    $lowt=false;
+                }
+            }
+            $low=$_POST["pass"];
+            for($i=0;$i<strlen($up);$i++){
+                if(is_numeric($up[$i])){
+                    $numt=true;
+                    break;
+                }
+                else{
+                    $numt=false;
+                }
+            }
+        
+            if(strpos($_POST["pass"],"?")||strpos($_POST["pass"],"#")){
+                    $sp=true;
+            }
+            else{
+                $sp=false;
+            }
+
 
             if(empty($_POST["pass"])){
                 $err_pass="Enter pass";
                 
             }
-            else if(strlen($_POST["pass"])<6){
+            else if(strlen($_POST["pass"])<8){
                 $err_pass="Password must be more than 6 characters long";
-                $pass="";
             }
             else if(strpos($_POST["pass"]," ")){
                 $err_pass="Password should not contain whitespace";
             }
-            else if(!ctype_upper($_POST["pass"])){
-                $err_pass="Password must contain uppercase letter";
-            }
-            else if(!ctype_lower($_POST["pass"])){
-                $err_pass="Password must contain lowercase letter";
-            }
             
-            else if(!strpos($_POST["pass"],"#")){
-                $err_mail="Must contain special character # or ?";
+            else if($upt==false){
+                $err_upass="Must contain Uppercase letter";
             }
-            else if(!strpos($_POST["pass"],"?")){
-                $err_mail="Must contain special character # or ?";
+            else if($lowt==false){
+                $err_lpass="Must contain Lowerrcase letter";
+            }
+            else if($numt==false){
+                $err_npass="Must contain Number";
+            }
+            else if($sp==false){
+                $err_spass="Must contain special character # or ?";
             }
 
             else{   
@@ -139,8 +177,11 @@
 
             }
 
-            
-            if(!is_numeric($_POST["code"])||!is_numeric($_POST["phone"]) ){
+            if(empty($_POST["phone"])){
+                $err_phone="Enter phone number";
+                
+            }
+            else if(!is_numeric($_POST["code"])||!is_numeric($_POST["phone"]) ){
                 $err_phone="Phone number should not contain letters";
 
             }
@@ -158,7 +199,7 @@
 
 
             if(empty($_POST["bdate"])){
-                $err_bdate="Date must be selected";
+                $err_bdate="Date must be selected    ";
             }
             else{
                 $bdate=$_POST["bdate"];
@@ -166,7 +207,7 @@
 
 
             if(empty($_POST["bmonth"])){
-                $err_bmonth="Month must be selected";
+                $err_bmonth="Month must be selected    ";
             }
             else{
                 $bmonth=$_POST["bmonth"];
@@ -181,33 +222,13 @@
             }
 
 
-            $up=$_POST["pass"];
-            for($i=0;$i<strlen($up);$i++){
-                if(ctype_lower($up[$i])){
-                    $upt=true;
-                    break;
-                }
-                else{
-                    $err_pass="there is no upper";
-                }
-            }
-            $low=$_POST["pass"];
-            for($i=0;$i<strlen($up);$i++){
-                if(ctype_lower($up[$i])){
-                    $lowt=true;
-                    break;
-                }
-                else{
-                    $err_pass="there is no upper";
-                }
-            }
+            
 
-
-            if(!isset($_POST["hear[]"])){
+            if(isset($_POST["hear[]"])==false){
                 $err_hear="This must be selected";
             }
             else{
-                $hobbies=$_POST["hear[]"];
+                $hear=$_POST["hear[]"];
             }
 
 
@@ -248,7 +269,11 @@
                     <tr>
                         <td><span>Password</span></td>
                         <td>: <input type="password" name="pass" placeholder ="Password">
-                        <span><?php echo $err_pass;?></span></td>
+                        <span><?php echo $err_pass;?></span>
+                        <span><?php echo $err_lpass;?></span>
+                        <span><?php echo $err_upass;?></span>
+                        <span><?php echo $err_spass;?></span>
+                        <span><?php echo $err_npass;?></span></td>
                     </tr>
                     <tr>
                         <td><span>Confirm Password</span></td>
