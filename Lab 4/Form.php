@@ -9,6 +9,7 @@
         $err_lpass="";
         $err_npass="";
         $err_spass="";
+
         $cpass="";
         $err_cpass="";
 
@@ -76,7 +77,7 @@
             }
             $up=$_POST["pass"];
             for($i=0;$i<strlen($up);$i++){
-                if(ctype_lower($up[$i])){
+                if(ctype_upper($up[$i])){
                     $upt=true;
                     break;
                 }
@@ -128,7 +129,7 @@
                 $err_upass="Must contain Uppercase letter";
             }
             else if($lowt==false){
-                $err_lpass="Must contain Lowerrcase letter";
+                $err_lpass="Must contain Lowercase letter";
             }
             else if($numt==false){
                 $err_npass="Must contain Number";
@@ -224,11 +225,11 @@
 
             
 
-            if(isset($_POST["hear[]"])==false){
+            if(!isset($_POST["hear"])){
                 $err_hear="This must be selected";
             }
             else{
-                $hear=$_POST["hear[]"];
+                $hear=$_POST["hear"];
             }
 
 
@@ -257,18 +258,18 @@
             <form action="" method="post"><!-- controls must be in form tag-->
                 <table>
                     <tr>
-                        <td><span>Name</span></td>
-                        <td>: <input type="text" name="name" placeholder ="Name">
+                        <td><span>Name:</span></td>
+                        <td><input type="text" name="name" placeholder ="Name">
                             <span><?php echo $err_name;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Username</span></td>
-                        <td>: <input type="text" name="uname" placeholder ="Username">
+                        <td><span>Username:</span></td>
+                        <td><input type="text" name="uname" placeholder ="Username">
                             <span><?php echo $err_uname;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Password</span></td>
-                        <td>: <input type="password" name="pass" placeholder ="Password">
+                        <td><span>Password:</span></td>
+                        <td><input type="password" name="pass" placeholder ="Password">
                         <span><?php echo $err_pass;?></span>
                         <span><?php echo $err_lpass;?></span>
                         <span><?php echo $err_upass;?></span>
@@ -276,32 +277,32 @@
                         <span><?php echo $err_npass;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Confirm Password</span></td>
-                        <td>: <input type="password" name="cpass" placeholder ="Confirm Password">
+                        <td><span>Confirm Password:</span></td>
+                        <td><input type="password" name="cpass" placeholder ="Confirm Password">
                         <span><?php echo $err_cpass;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Email</span></td>
-                        <td>: <input type="text" name="mail" placeholder ="E-mail">
+                        <td><span>Email:</span></td>
+                        <td><input type="text" name="mail" placeholder ="E-mail">
                         <span><?php echo $err_mail;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Phone</span></td>
-                        <td>: <input type="text" name="code" placeholder ="code" size='4'> - <input type="text" name="phone" placeholder ="Number">
+                        <td><span>Phone:</span></td>
+                        <td><input type="text" name="code" placeholder ="code" size='4'> - <input type="text" name="phone" placeholder ="Number">
                         <span><?php echo $err_phone;?></span></td>
                     </tr>
 
                     <tr>
-                        <td><span>Address</span></td>
-                        <td>: <input type="text" name="city" placeholder ="city" size='6'> - <input type="text" name="state" placeholder ="State" size='6'> </br>
+                        <td><span>Address:</span></td>
+                        <td><input type="text" name="city" placeholder ="city" size='6'> - <input type="text" name="state" placeholder ="State" size='6'> </br>
                          <input type="text" name="zip" placeholder ="Postal zip code">
                         <span><?php echo $err_address ;?></span>
                         <span><?php echo $err_city ;?></span>
                         <span><?php echo $err_city ;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Birth Date</span></td>
-                        <td>:<select name ="bdate">
+                        <td><span>Birth Date:</span></td>
+                        <td><select name ="bdate">
                         <option disabled selected>Date</option>
                         <?php         for($date = 1; $date <= 31; $date++)         echo"<option value = '".$date."'>".$date."</option>";     ?>
                         </select>
@@ -323,13 +324,13 @@
                     </tr>
                 
                     <tr>
-                        <td><span>Gender</span></td>
-                        <td>: <input type="radio" name="gender" value="male">Male
+                        <td><span>Gender:</span></td>
+                        <td><input type="radio" name="gender" value="male">Male
                             <input type="radio" name="gender" value="male">Female
                             <span><?php echo $err_gender;?></span></td>
                     </tr>
                     <tr>
-                        <td><span>Where did you hear about us</span></td>
+                        <td><span>Where did you hear about us:</span></td>
                         <td> <input type="checkbox"value="A friend of colleague" name="hear[]"> A friend of colleague </br>
                         <input type="checkbox" value="Google" name="hear[]">Google </br>
                         <input type="checkbox" value="Blogpost" name="hear[]">Blogpost </br>
